@@ -3,8 +3,6 @@
 namespace Conserva\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
-use Zend\View\Model\ViewModel;
-use Zend\Stdlib\ArrayUtils;
 use Zend\Version\Version;
 use Zend\Console\ColorInterface as Color;
 use Conserva\Module;
