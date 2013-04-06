@@ -80,6 +80,10 @@ function addDir($phar, $sDir, $baseDir = null) {
  * @param string $sFile 
  */
 function addFile($phar, $sFile, $baseDir = null) {
+    
+    $srcRoot   = dirname(__DIR__);
+    echo str_replace($srcRoot, '', $sFile) . PHP_EOL;
+    
     if (null !== $baseDir) {
         $phar->addFromString(substr($sFile, strlen($baseDir) + 1), php_strip_whitespace($sFile));
     } else {

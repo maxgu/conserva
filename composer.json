@@ -1,12 +1,21 @@
 {
-    "name": "zendframework/zftool",
-    "description": "Utility module for Zend Framework 2 applications.",
+    "name": "conserva",
+    "description": "Cli tool for database dumps",
     "keywords": [
-        "zf2",
-        "tool"
+        "conserva",
+        "db-tool",
+        "db-dump",
+        "backup"
     ],
-    "homepage": "http://framework.zend.com/",
-    "license": "BSD-3-Clause",
+    "homepage": "http://conserva.org/",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Max Gulturyan",
+            "email": "gulturyan@gmail.com",
+            "homepage": "http://about.me/maxgu"
+        }
+    ],
     "repositories": [
         {
             "type": "composer",
@@ -20,18 +29,18 @@
     },
     "require": {
         "php": ">=5.3.3",
-        "zendframework/zend-mvc": ">=2.0.0",
-        "zendframework/zend-modulemanager": ">=2.0.0",
         "zendframework/zend-console": ">=2.0.0",
         "zendframework/zend-code": ">=2.0.0",
         "zendframework/zend-config": ">=2.0.0",
-        "zendframework/zend-view": ">=2.0.0",
-        "zendframework/zend-stdlib": ">=2.0.0",
-        "zendframework/zend-servicemanager": ">=2.0.0",
         "zendframework/zend-file": ">=2.0.0",
+        "zendframework/zend-modulemanager": ">=2.0.0",
+        "zendframework/zend-mvc": ">=2.0.0",
+        "zendframework/zend-servicemanager": ">=2.0.0",
         "zendframework/zend-loader": ">=2.0.0",
+        "zendframework/zend-stdlib": ">=2.0.0",
+        "zendframework/zend-text": ">=2.0.0",
         "zendframework/zend-version": ">=2.0.0",
-        "zendframework/zend-text": ">=2.0.0"
+        "zendframework/zend-view": ">=2.0.0",
     },
     "bin": ["zf.php"]
 }
