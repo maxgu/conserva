@@ -1,12 +1,5 @@
 #!/usr/bin/env php
 <?php
-/**
- * ZF2 command line tool
- * 
- * @link      http://github.com/zendframework/ZFTool for the canonical source repository
- * @copyright Copyright (c) 2005-2013 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
- */
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
 
@@ -29,13 +22,13 @@ if (file_exists("$basePath/vendor/autoload.php")) {
 
 if (file_exists("$basePath/config/application.config.php")) {
     $appConfig = require "$basePath/config/application.config.php";
-    if (!isset($appConfig['modules']['ZFTool'])) {
-        $appConfig['modules'][] = 'ZFTool';
+    if (!isset($appConfig['modules']['Conserva'])) {
+        $appConfig['modules'][] = 'Conserva';
     }
 } else {
     $appConfig = array(
         'modules' => array(
-            'ZFTool',
+            'Conserva',
         ),
         'module_listener_options' => array(
             'config_glob_paths'    => array(
