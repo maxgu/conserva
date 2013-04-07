@@ -40,7 +40,12 @@ class Module implements ConsoleUsageProviderInterface, AutoloaderProviderInterfa
         // TODO: Load strings from a translation container
         return array(
             'Basic information:',
-            '--version' => 'display current Zend Framework version',
+            '--version'         => 'display current Zend Framework version',
+            
+            'Backup MySQL databases:',
+            'mysql --user=<user> --password=<password>' => 'access to database',
+            array('<user>', 'database user'),
+            array('<password>', 'database password'),
         );
     }
 

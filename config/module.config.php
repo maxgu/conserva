@@ -9,6 +9,7 @@ return array(
     'controllers' => array(
         'invokables' => array(
             'Conserva\Controller\Info'     => 'Conserva\Controller\InfoController',
+            'Conserva\Controller\Mysql'    => 'Conserva\Controller\MysqlController',
         ),
     ),
 
@@ -24,7 +25,24 @@ return array(
                         ),
                     ),
                 ),
+                'mysql' => array(
+                    'options' => array(
+                        'route'    => 'mysql [--user=] [--password=]',
+                        'defaults' => array(
+                            'controller' => 'Conserva\Controller\Mysql',
+                            'action'     => 'backup',
+                        ),
+                    ),
+                ),
             ),
+        ),
+    ),
+    
+    'service_manager' => array(
+        'factories' => array(
+            'MysqlService'     => function ($sm) {
+                return new Conserva\Mysql\Service($sm);
+            },
         ),
     ),
 
