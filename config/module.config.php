@@ -27,7 +27,7 @@ return array(
                 ),
                 'mysql' => array(
                     'options' => array(
-                        'route'    => 'mysql [--user=] [--password=]',
+                        'route'    => 'mysql [--user=] [--password=] [--config=]',
                         'defaults' => array(
                             'controller' => 'Conserva\Controller\Mysql',
                             'action'     => 'backup',

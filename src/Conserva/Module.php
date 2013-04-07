@@ -40,12 +40,16 @@ class Module implements ConsoleUsageProviderInterface, AutoloaderProviderInterfa
         // TODO: Load strings from a translation container
         return array(
             'Basic information:',
-            '--version'         => 'display current Zend Framework version',
+            '--version'         => 'display current version',
             
-            'Backup MySQL databases:',
+            'Backup MySQL all databases:',
             'mysql --user=<user> --password=<password>' => 'access to database',
             array('<user>', 'database user'),
             array('<password>', 'database password'),
+            
+            'Backup MySQL databases by config:',
+            'mysql --config=<configFile>' => 'run dump by config (more options)',
+            array('<configFile>', 'path to config file'),
         );
     }
 

@@ -3,6 +3,8 @@
 namespace Conserva\Database;
 
 class Model extends \T4\DomainModels\Model {
+    
+    protected $zipName;
 
     protected $data = array(
         'name'      => null,
@@ -13,7 +15,11 @@ class Model extends \T4\DomainModels\Model {
     }
     
     public function getZipName() {
-        return sprintf('%s-%s.tar.gz', $this->getName(), date('YmdH'));
+        if (empty($this->zipName)) {
+            $this->zipName = sprintf('%s-%s.tar.gz', $this->getName(), date('YmdH'));
+        }
+        
+        return $this->zipName;
     }
     
 }
