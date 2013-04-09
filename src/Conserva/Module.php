@@ -50,6 +50,9 @@ class Module implements ConsoleUsageProviderInterface, AutoloaderProviderInterfa
             'Backup MySQL databases by config:',
             'mysql --config=<configFile>' => 'run dump by config (more options)',
             array('<configFile>', 'path to config file'),
+            
+            'conserva-backup.org',
+            '[t4web.com.ua production]',
         );
     }
 
