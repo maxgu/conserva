@@ -36,7 +36,7 @@ class Module implements ConsoleUsageProviderInterface, AutoloaderProviderInterfa
         $exceptionStrategy = $this->sm->get('ExceptionStrategy');
         
         $message = <<<EOT
- An error occurred:
+An error occurred:
     :message
 ----------------------------------------------------------------------
 :file::line
@@ -50,8 +50,11 @@ EOT;
         $notFoundStrategy = $this->sm->get('Conserva-RouteNotFoundStrategy');
         
         $message = <<<EOT
- :banner
- An error occurred:
+:banner
+
+:usage
+
+An error occurred:
    :report
 
 EOT;
@@ -106,7 +109,7 @@ EOT;
             
             'Backup MySQL databases by config:',
             'mysql --config=<configFile>' => 'run dump by config (more options)',
-            array('<configFile>', 'path to config file'),
+            array('<configFile>', 'path to config file (if not set, search in current directory (./config.ini))'),
             
             'conserva-backup.org',
             '[t4web.com.ua production]',

@@ -14,6 +14,10 @@ class MysqlController extends AbstractActionController {
         
         $configFile = $request->getParam('config', null);
         
+        if (empty($configFile)) {
+            $configFile = 'config.ini';
+        }
+        
         if (!empty($configFile)) {
             return $this->backupByConfigAction();
         }
@@ -44,6 +48,10 @@ class MysqlController extends AbstractActionController {
         $console = $this->getServiceLocator()->get('console');
         
         $configFile = $request->getParam('config', null);
+        
+        if (empty($configFile)) {
+            $configFile = 'config.ini';
+        }
         
         if (!file_exists($configFile)) {
             throw new \RuntimeException("file $configFile does not exists");
