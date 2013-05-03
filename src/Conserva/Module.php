@@ -38,8 +38,8 @@ class Module implements ConsoleUsageProviderInterface, AutoloaderProviderInterfa
         $message = <<<EOT
 An error occurred:
     :message
-----------------------------------------------------------------------
-:file::line
+                
+see ./conserva help
 
 EOT;
         
@@ -56,6 +56,8 @@ EOT;
 
 An error occurred:
    :report
+
+see ./conserva help
 
 EOT;
         
@@ -102,12 +104,7 @@ EOT;
             'Basic information:',
             '--version'         => 'display current version',
             
-            'Backup MySQL all databases:',
-            'mysql --user=<user> --password=<password>' => 'access to database',
-            array('<user>', 'database user'),
-            array('<password>', 'database password'),
-            
-            'Backup MySQL databases by config:',
+            'Backup MySQL databases:',
             'mysql --config=<configFile>' => 'run dump by config (more options)',
             array('<configFile>', 'path to config file (if not set, search in current directory (./config.ini))'),
             

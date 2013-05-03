@@ -11,6 +11,7 @@ return array(
             'Conserva\Controller\Info'     => 'Conserva\Controller\InfoController',
             'Conserva\Controller\Mysql'    => 'Conserva\Controller\MysqlController',
             'Conserva\Controller\Config'   => 'Conserva\Controller\ConfigController',
+            'Conserva\Controller\Help'     => 'Conserva\Controller\HelpController',
         ),
     ),
 
@@ -28,7 +29,7 @@ return array(
                 ),
                 'mysql' => array(
                     'options' => array(
-                        'route'    => 'mysql [--user=] [--password=] [--config=]',
+                        'route'    => 'mysql [--config=]',
                         'defaults' => array(
                             'controller' => 'Conserva\Controller\Mysql',
                             'action'     => 'backup',
@@ -44,6 +45,15 @@ return array(
                         ),
                     ),
                 ),
+                'help' => array(
+                    'options' => array(
+                        'route'    => 'help',
+                        'defaults' => array(
+                            'controller' => 'Conserva\Controller\Help',
+                            'action'     => 'show',
+                        ),
+                    ),
+                ),
             ),
         ),
     ),
@@ -52,6 +62,9 @@ return array(
         'factories' => array(
             'MysqlService'     => function ($sm) {
                 return new Conserva\Mysql\Service($sm);
+            },
+            'ConfigService'     => function ($sm) {
+                return new Conserva\Config\Service($sm);
             },
         ),
     ),

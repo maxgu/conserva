@@ -30,6 +30,12 @@ class Model extends \T4\DomainModels\Model {
         return $this->data['database'][$paramName];
     }
     
+    public function setDatabase($paramName, $value) {
+        $this->data['database'][$paramName] = $value;
+        
+        return $this;
+    }
+    
     public function getDatabases() {
         if (!is_null($this->databases)) {
             return $this->databases;

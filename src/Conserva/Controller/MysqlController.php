@@ -7,16 +7,12 @@ use Zend\Console\ColorInterface as Color;
 use Conserva\Config\Model as Config;
 
 class MysqlController extends AbstractActionController {
-    
+    /*
     public function backupAction() {
         $request = $this->getRequest();
         $console = $this->getServiceLocator()->get('console');
         
         $configFile = $request->getParam('config', null);
-        
-        if (empty($configFile)) {
-            $configFile = 'config.ini';
-        }
         
         if (!empty($configFile)) {
             return $this->backupByConfigAction();
@@ -25,11 +21,21 @@ class MysqlController extends AbstractActionController {
         $dbUser = $request->getParam('user', null);
         $dbPass = $request->getParam('password', null);
         
-        /* @var $service \Conserva\Mysql\Service */
+        $config = new Config(ConfigController::DEFAULT_CONFIG_PATH);
+        
+        $config->setDatabase('username', $dbUser);
+        $config->setDatabase('password', $dbPass);
+        
+        /* @var $configService \Conserva\Config\Service /
+        $configService = $this->getServiceLocator()->get('ConfigService');
+        
+        $configService->check($config);
+        
+        /* @var $service \Conserva\Mysql\Service /
         $service = $this->getServiceLocator()->get('MysqlService');
         
         try {
-            /* @var $databaseCollection \Conserva\Database\Collection */
+            /* @var $databaseCollection \Conserva\Database\Collection /
             $databaseCollection = $service->getDatabases($dbUser, $dbPass);
         } catch (\Zend\Db\Adapter\Exception\RuntimeException $e) {
             $console->writeLine('Break with error:');
@@ -42,8 +48,8 @@ class MysqlController extends AbstractActionController {
         
         $console->writeLine('done', Color::GREEN);
     }
-    
-    public function backupByConfigAction() {
+    */
+    public function backupAction() {
         $request = $this->getRequest();
         $console = $this->getServiceLocator()->get('console');
         
