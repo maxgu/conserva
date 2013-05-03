@@ -34,6 +34,15 @@ return array(
                         ),
                     ),
                 ),
+                'config' => array(
+                    'options' => array(
+                        'route'    => 'create config',
+                        'defaults' => array(
+                            'controller' => 'Conserva\Controller\Config',
+                            'action'     => 'create',
+                        ),
+                    ),
+                ),
             ),
         ),
     ),
