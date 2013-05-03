@@ -7,48 +7,7 @@ use Zend\Console\ColorInterface as Color;
 use Conserva\Config\Model as Config;
 
 class MysqlController extends AbstractActionController {
-    /*
-    public function backupAction() {
-        $request = $this->getRequest();
-        $console = $this->getServiceLocator()->get('console');
-        
-        $configFile = $request->getParam('config', null);
-        
-        if (!empty($configFile)) {
-            return $this->backupByConfigAction();
-        }
-        
-        $dbUser = $request->getParam('user', null);
-        $dbPass = $request->getParam('password', null);
-        
-        $config = new Config(ConfigController::DEFAULT_CONFIG_PATH);
-        
-        $config->setDatabase('username', $dbUser);
-        $config->setDatabase('password', $dbPass);
-        
-        /* @var $configService \Conserva\Config\Service /
-        $configService = $this->getServiceLocator()->get('ConfigService');
-        
-        $configService->check($config);
-        
-        /* @var $service \Conserva\Mysql\Service /
-        $service = $this->getServiceLocator()->get('MysqlService');
-        
-        try {
-            /* @var $databaseCollection \Conserva\Database\Collection /
-            $databaseCollection = $service->getDatabases($dbUser, $dbPass);
-        } catch (\Zend\Db\Adapter\Exception\RuntimeException $e) {
-            $console->writeLine('Break with error:');
-            $console->writeLine("  " . $e->getPrevious()->getMessage(), Color::RED);
-            return;
-        }
-        
-        $service->processDump($databaseCollection);
-        $service->processZip($databaseCollection);
-        
-        $console->writeLine('done', Color::GREEN);
-    }
-    */
+    
     public function backupAction() {
         $request = $this->getRequest();
         $console = $this->getServiceLocator()->get('console');
@@ -65,8 +24,10 @@ class MysqlController extends AbstractActionController {
         
         $config = new Config($configFile);
         
-//        $reader = new \Zend\Config\Reader\Ini();
-//        $config = $reader->fromFile($configFile);
+        /* @var $configService \Conserva\Config\Service */
+        $configService = $this->getServiceLocator()->get('ConfigService');
+        
+        $configService->check($config);
         
         $dbUser = $config->getDatabase('username');
         $dbPass = $config->getDatabase('password');

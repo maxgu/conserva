@@ -13,6 +13,7 @@ class Model extends \T4\DomainModels\Model {
         'save_last'         => null,
         'own_folder_for_db' => null,
         'folder_prefix'     => null,
+        'backup_folder'     => null,
     );
     
     public function __construct($configFile) {
@@ -65,18 +66,20 @@ class Model extends \T4\DomainModels\Model {
     }
     
     public function getStoragePath(Database $database) {
-        $path = getcwd();
-        
         if ($this->getOwnFolderForDb()) {
-            $path =  $path . DIRECTORY_SEPARATOR . $this->getFolderPath($database);
+            $path = $this->getFolderPath($database);
+        } else {
+            $path = $this->getBackupFolder();
         }
         
         return $path;
     }
     
     public function prepareStorageFolder(Database $database) {
-        if ($this->getOwnFolderForDb() && !is_dir($database->getName())) {
-            mkdir($database->getName());
+        $backupPath = $this->getBackupFolder();
+        
+        if ($this->getOwnFolderForDb() && !is_dir($backupPath . DIRECTORY_SEPARATOR . $database->getName())) {
+            mkdir($backupPath . DIRECTORY_SEPARATOR . $database->getName());
         }
         
         if (($this->getFolderPrefix() != '') && !is_dir($this->getFolderPath($database))) {
@@ -85,10 +88,10 @@ class Model extends \T4\DomainModels\Model {
     }
     
     private function getFolderPath(Database $database) {
-        $path = '';
+        $path = $this->getBackupFolder() . DIRECTORY_SEPARATOR;
         
         if ($this->getOwnFolderForDb()) {
-            $path = $database->getName() . DIRECTORY_SEPARATOR;
+            $path .= $database->getName() . DIRECTORY_SEPARATOR;
         }
         
         if ($this->getFolderPrefix() != '') {
