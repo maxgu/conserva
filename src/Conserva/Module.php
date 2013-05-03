@@ -27,7 +27,7 @@ class Module implements ConsoleUsageProviderInterface, AutoloaderProviderInterfa
         $em         = $event->getApplication()->getEventManager();
         $this->sm   = $event->getApplication()->getServiceManager();
         $em->attach($this->getRouteNotFoundStrategy());
-        //$em->attach(MvcEvent::EVENT_BOOTSTRAP, array($this, 'prepareExceptionStrategy'), -1);
+        
         $this->prepareExceptionStrategy();
         $this->prepareRouteNotFoundStrategy();
     }
@@ -36,18 +36,10 @@ class Module implements ConsoleUsageProviderInterface, AutoloaderProviderInterfa
         $exceptionStrategy = $this->sm->get('ExceptionStrategy');
         
         $message = <<<EOT
-======================================================================
-   The conserva has thrown an exception!
-======================================================================
- :className
- :message
+ An error occurred:
+    :message
 ----------------------------------------------------------------------
 :file::line
-:stack
-======================================================================
-   Previous Exception(s):
-======================================================================
-:previous
 
 EOT;
         

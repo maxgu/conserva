@@ -10,6 +10,7 @@ return array(
         'invokables' => array(
             'Conserva\Controller\Info'     => 'Conserva\Controller\InfoController',
             'Conserva\Controller\Mysql'    => 'Conserva\Controller\MysqlController',
+            'Conserva\Controller\Config'   => 'Conserva\Controller\ConfigController',
         ),
     ),
 
