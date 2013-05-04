@@ -6,7 +6,7 @@ use Zend\Mvc\Controller\AbstractActionController;
 
 class ConfigController extends AbstractActionController {
     
-    const DEFAULT_CONFIG_PATH = 'config/example.config.ini';
+    const DEFAULT_CONFIG_PATH = './config/example.config.ini';
     
     public function createAction() {
         if (!file_exists(self::DEFAULT_CONFIG_PATH)) {
