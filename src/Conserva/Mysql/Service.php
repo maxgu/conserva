@@ -8,7 +8,7 @@ use Symfony\Component\Finder\Finder;
 
 class Service extends \T4\DomainModels\Service {
     
-    protected $excludeDBs = array('information_schema', 'mysql', 'performance_schema');
+    protected $excludeDBs = array('information_schema', 'mysql', 'performance_schema', 'phpmyadmin');
     
     protected $user;
     protected $pass;

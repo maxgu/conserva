@@ -54,6 +54,6 @@ class MysqlController extends AbstractActionController {
         $service->processZip($databaseCollection);
         $service->removeRedundant($databaseCollection);
         
-        $console->writeLine('done', Color::GREEN);
+        //$console->writeLine('done', Color::GREEN);
     }
 }

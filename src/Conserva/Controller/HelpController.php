@@ -25,8 +25,7 @@ conserva-backup.org
 
 EOT;
         
-        echo $message;
-        
+        return $message;
     }
 
 }

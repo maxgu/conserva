@@ -11,7 +11,7 @@ class InfoController extends AbstractActionController {
 
     public function versionAction() {
         $console = $this->getServiceLocator()->get('console');
-
+        
         $msg = 'The Conserva is using Zend Framework ';
 
         $console->writeLine(Module::NAME . ' ver. ' . Module::VERSION, Color::GREEN);
