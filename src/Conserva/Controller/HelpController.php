@@ -12,16 +12,19 @@ class HelpController extends AbstractActionController {
 Conserva - Database backup command line Tool ver. 0.8
 
 Basic information:
-   --version    display current version                                                        
+   --version    display current version                                                                  
+
+Config:
+   create config    will create config.ini in current folder                                             
 
 Backup MySQL databases:
-   mysql --config=<configFile>    run dump by config (more options)                            
+   mysql --config=<configFile>    run dump by config (more options)                                    
 
-  <configFile>    path to config file (if not set, search in current directory                 
-                  (./config.ini))                                                              
+  <configFile>    path to config file (if not set, search in current directory (./config.ini))           
 
 conserva-backup.org
 [t4web.com.ua production]
+
 
 EOT;
         

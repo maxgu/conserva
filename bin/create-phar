@@ -60,6 +60,9 @@ function addDir($phar, $sDir, $baseDir = null) {
         if (preg_match ('/\\.php$/i', $sFile)) {
             addFile($phar, $sFile, $baseDir);
         }
+        if (preg_match ('/\\.ini$/i', $sFile)) {
+            addFile($phar, $sFile, $baseDir);
+        }
     }
 }
 
