@@ -20,6 +20,8 @@ class ConfigControllerTest extends AbstractControllerTest {
         $this->assertActionName('create');
         $this->assertFileExists('./config.ini');
         
+        @unlink('./config.ini');
+        
         chdir($currentDir);
     }
 
