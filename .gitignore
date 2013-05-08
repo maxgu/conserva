@@ -9,4 +9,3 @@ composer.lock
 composer.phar
 .*.sw*
 .*.un~
-vendor/

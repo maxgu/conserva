@@ -1,103 +1,71 @@
 <?php
 return array(
-    'ZFTool' => array(
-        'disableUsage' => false,    // set to true to disable showing available ZFTool commands in Console.
+    'Conserva' => array(
+        'disableUsage' => false,    // set to true to disable showing available Conserva commands in Console.
     ),
 
     // -----=-----=-----=-----=-----=-----=-----=-----=-----=-----=-----=-----=-----=-----=-----=-----=
 
-    'service_manager' => array(
-        'factories' => array(
-            'translator' => 'Zend\I18n\Translator\TranslatorServiceFactory',
-        ),
-    ),
-
     'controllers' => array(
         'invokables' => array(
-            'ZFTool\Controller\Info'     => 'ZFTool\Controller\InfoController',
-            'ZFTool\Controller\Module'   => 'ZFTool\Controller\ModuleController',
-            'ZFTool\Controller\Classmap' => 'ZFTool\Controller\ClassmapController',
-            'ZFTool\Controller\Create'   => 'ZFTool\Controller\CreateController',
-            'ZFTool\Controller\Install'  => 'ZFTool\Controller\InstallController',
+            'Conserva\Controller\Info'     => 'Conserva\Controller\InfoController',
+            'Conserva\Controller\Mysql'    => 'Conserva\Controller\MysqlController',
+            'Conserva\Controller\Config'   => 'Conserva\Controller\ConfigController',
+            'Conserva\Controller\Help'     => 'Conserva\Controller\HelpController',
         ),
     ),
 
     'console' => array(
         'router' => array(
             'routes' => array(
-                'zftool-version' => array(
-                    'options' => array(
-                        'route'    => 'version',
-                        'defaults' => array(
-                            'controller' => 'ZFTool\Controller\Info',
-                            'action'     => 'version',
-                        ),
-                    ),
-                ),
-                'zftool-version2' => array(
+                'version' => array(
                     'options' => array(
                         'route'    => '--version',
                         'defaults' => array(
-                            'controller' => 'ZFTool\Controller\Info',
+                            'controller' => 'Conserva\Controller\Info',
                             'action'     => 'version',
                         ),
                     ),
                 ),
-                'zftool-config-list' => array(
+                'mysql' => array(
                     'options' => array(
-                        'route'    => 'config [list]',
+                        'route'    => 'mysql [--config=]',
                         'defaults' => array(
-                            'controller' => 'ZFTool\Controller\Info',
-                            'action'     => 'config',
+                            'controller' => 'Conserva\Controller\Mysql',
+                            'action'     => 'backup',
                         ),
                     ),
                 ),
-                'zftool-classmap-generate' => array(
+                'config' => array(
                     'options' => array(
-                        'route'    => 'classmap generate <directory> [<destination>] [--append|-a] [--overwrite|-w]',
+                        'route'    => 'create config',
                         'defaults' => array(
-                            'controller' => 'ZFTool\Controller\Classmap',
-                            'action'     => 'generate',
+                            'controller' => 'Conserva\Controller\Config',
+                            'action'     => 'create',
                         ),
                     ),
                 ),
-                'zftool-modules-list' => array(
+                'help' => array(
                     'options' => array(
-                        'route'    => 'modules [list]',
+                        'route'    => 'help',
                         'defaults' => array(
-                            'controller' => 'ZFTool\Controller\Module',
-                            'action'     => 'list',
-                        ),
-                    ),
-                ),
-                'zftool-create-project' => array(
-                    'options' => array(
-                        'route'    => 'create project <path>',
-                        'defaults' => array(
-                            'controller' => 'ZFTool\Controller\Create',
-                            'action'     => 'project',
-                        ),
-                    ),
-                ),
-                'zftool-create-module' => array(
-                    'options' => array(
-                        'route'    => 'create module <name> [<path>]',
-                        'defaults' => array(
-                            'controller' => 'ZFTool\Controller\Create',
-                            'action'     => 'module',
-                        ),
-                    ),
-                ),
-                'zftool-install-zf' => array(
-                    'options' => array(
-                        'route'    => 'install zf <path> [<version>]',
-                        'defaults' => array(
-                            'controller' => 'ZFTool\Controller\Install',
-                            'action'     => 'zf',
+                            'controller' => 'Conserva\Controller\Help',
+                            'action'     => 'show',
                         ),
                     ),
                 ),
             ),
+        ),
+    ),
+    
+    'service_manager' => array(
+        'factories' => array(
+            'MysqlService'     => function ($sm) {
+                return new Conserva\Mysql\Service($sm);
+            },
+            'ConfigService'     => function ($sm) {
+                return new Conserva\Config\Service($sm);
+            },
         ),
     ),
 
